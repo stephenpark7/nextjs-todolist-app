@@ -1,0 +1,8 @@
+.btnDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin: auto;
+  width: 210px;
+}

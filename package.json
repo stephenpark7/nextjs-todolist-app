@@ -1,0 +1,27 @@
+{
+  "name": "todo-list-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p $PORT"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "classnames": "^2.2.6",
+    "dotenv": "^8.2.0",
+    "mongodb": "^3.5.7",
+    "next": "^9.4.1",
+    "next-connect": "^0.6.6",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "validator": "^13.0.0"
+  },
+  "cacheDirectories": [
+    ".next/cache"
+  ],
+  "author": "Stephen Park",
+  "license": "ISC",
+  "description": ""
+}

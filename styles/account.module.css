@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.row {
+  display: table-row;
+}
+
+.input {
+  margin-bottom: 1em;
+}
+
+.label {
+  display: table-cell;
+  padding-right: 2em;
+}
+
+.btnDiv {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  margin: auto;
+  width: 280px;
+  margin-top: .5em;
+}

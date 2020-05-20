@@ -1,0 +1,14 @@
+.base {
+  background-color: rgb(240, 240, 240);
+  padding: 1em;
+  margin-bottom: .5em;
+  border-radius: 10px;
+}
+
+.success {
+  color: green;
+}
+
+.error {
+  color: red;
+}
