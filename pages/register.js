@@ -4,13 +4,12 @@ import Alert from "../components/alert"
 
 import utilStyles from "../styles/utils.module.css"
 import styles from "../styles/account.module.css"
-import cn from "classnames"
 
 import { useState } from "react";
+import Router from "next/router";
 
 export default function Register(props) {
 
-  const [alertType, setAlert] = useState(null);
   const [alertMsg, setAlertMsg] = useState(null);
 
   async function handleSubmit(e) {
@@ -32,49 +31,18 @@ export default function Register(props) {
     });
 
     if (res.status === 201) {
-      const userObj = await res.json();
-      console.log(userObj);
+      await res.json();
+      Router.push("/");
     } else {
-      setAlert("error");
       setAlertMsg(await res.text());
     }
-
-    // if (data.password !== data.confirmPassword) {
-    //   setAlert("error");
-    //   setAlertMsg("Passwords do not match, please check again.");
-    // }
-    // else if (data.username === "already exists") {
-    //   setAlert("error");
-    //   setAlertMsg("Username already exists, please try a different one.");
-    // }
-    // else {
-
-    //   fetch("../api/register", {
-    //     method: "POST",
-    //     headers: {
-    //       "Accept": "application/json, text/plain, */*",
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify(data)
-    //   })
-    //   .then(res => res.json())
-    //   .then(data => {
-    //     console.log(data);
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
-
-    //   // setAlert(null);
-    //   // setAlertMsg(null);
-    // }
 
   }
 
   return (
     <Layout>
 
-      <Alert type={alertType}>
+      <Alert type="error">
         {alertMsg && alertMsg}
       </Alert>
 
