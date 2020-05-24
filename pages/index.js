@@ -23,9 +23,9 @@ function Home({ allPostsData }) {
 
       <section className={utilStyles.headingMd}>
         <div className={indexStyles.btnDiv}>
-          <Link href="/register">
+          <Link href="/signup">
             <a>
-              <button className={utilStyles.btn}>Register</button>
+              <button className={utilStyles.btn}>Sign up</button>
             </a>
           </Link>
 

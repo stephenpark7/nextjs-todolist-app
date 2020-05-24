@@ -6,12 +6,13 @@ import middleware from "../../middlewares/middleware";
 import { extractUser } from '../../lib/api-helpers';
 
 const handler = nextConnect();
+
 handler.use(middleware);
 
 // POST /api/users
 handler.post(async (req, res) => {
 
-  const { username, password } = req.body;
+  const { name, password } = req.body;
   const email = normalizeEmail(req.body.email);
   
   // check email address
@@ -19,16 +20,13 @@ handler.post(async (req, res) => {
     res.status(400).send("The email you entered is invalid.");
     return;
   }
+
   // check password & username
-  if (!password || !username) {
+  if (!password || !name) {
     res.status(400).send("Missing field(s)");
     return;
   }
-  // check if username exists
-  if ((await req.db.collection("users").countDocuments({ username })) > 0) {
-    res.status(400).send("The username has already been used.");
-    return;
-  }
+  
   // check if email exists
   if ((await req.db.collection("users").countDocuments({ email })) > 0) {
     res.status(400).send("The email has already been used.");
@@ -41,19 +39,25 @@ handler.post(async (req, res) => {
   // insert username into collection
   const user = await req.db
     .collection("users")
-    .insertOne({ email, password: hashedPassword, username })
-    .then(({ ops }) => ops[0]);
+    .insertOne({ email, password: hashedPassword, name });
 
-  req.logIn(user, err => {
-    if (err) {
-      res.status(400).send(err);
-      return;
-      //throw err;
-    }
+  req.logIn(user, (err) => {
+    if (err) throw err;
     res.status(201).json({
-      user: extractUser(req)
+      user: extractUser(req),
     });
   });
+
+  // req.logIn(user, err => {
+  //   if (err) {
+  //     console.log(err);
+  //     res.status(400).send(err);
+  //     return;
+  //   }
+  //   res.status(201).json({
+  //     user: extractUser(req)
+  //   });
+  // });
 
   // send message indicating success
   // res.status(201).send({ message: "success" });

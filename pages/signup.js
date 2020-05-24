@@ -17,27 +17,24 @@ export default function Register(props) {
   const [user, { mutate }] = useUser();
   const [alertMsg, setAlertMsg] = useState(null);
 
-// console.log(user);
+  // console.log(user);
 
-//   useEffect(() => {
-//     if (user) Router.push("/");
-//   }, [user]);
+  //   useEffect(() => {
+  //     if (user) Router.push("/");
+  //   }, [user]);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     const data = {
-      username: e.currentTarget.username.value,
       email: e.currentTarget.email.value,
-      password: e.currentTarget.password.value,
-      confirmPassword: e.currentTarget.confirmPassword.value,
+      name: e.currentTarget.name.value,
+      password: e.currentTarget.password.value
     };
 
     const res = await fetch("/api/users", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
     });
 
@@ -63,10 +60,10 @@ export default function Register(props) {
       <section className={styles.container}>
 
         <form onSubmit={handleSubmit} className={styles.form}>
-
-          <div className={styles.row}>
-            <label className={styles.label} htmlFor="username">Choose a username:</label>
-            <input className={styles.input} id="username" type="text" required></input>
+          
+        <div className={styles.row}>
+            <label className={styles.label} htmlFor="name">Your name:</label>
+            <input className={styles.input} id="name" type="name" required></input>
           </div>
 
           <div className={styles.row}>
@@ -79,13 +76,8 @@ export default function Register(props) {
             <input className={styles.input} id="password" type="password" required></input>
           </div>
 
-          <div className={styles.row}>
-            <label className={styles.label} htmlFor="confirmPassword">Confirm password:</label>
-            <input className={styles.input} id="confirmPassword" type="password" required></input>
-          </div>
-
           <div className={styles.btnDiv}>
-            <button type="submit" className={utilStyles.btn}>Create an account</button>
+            <button type="submit" className={utilStyles.btn}>Sign up</button>
             <Link href="/">
               <a>
                 <button type="button" className={utilStyles.btn}>Go back</button>
