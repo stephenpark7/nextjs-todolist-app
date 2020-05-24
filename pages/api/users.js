@@ -5,13 +5,14 @@ import bcrypt from "bcryptjs";
 import middleware from "../../middlewares/database";
 
 const handler = nextConnect();
-
-handler.use(middleware); // see how we"re reusing our middleware
+handler.use(middleware);
 
 // POST /api/users
 handler.post(async (req, res) => {
+
   const { username, password } = req.body;
-  const email = normalizeEmail(req.body.email); // this is to handle things like jane.doe@gmail.com and janedoe@gmail.com being the same
+  const email = normalizeEmail(req.body.email);
+  
   // check email address
   if (!isEmail(email)) {
     res.status(400).send("The email you entered is invalid.");
@@ -32,14 +33,15 @@ handler.post(async (req, res) => {
     res.status(400).send("The email has already been used.");
     return;
   }
-  const hashedPassword = await bcrypt.hash(password, 10);
   
-  const user = await req.db
-    .collection("users")
-    .insertOne({ email, password: hashedPassword, username });
+  // encrypt password
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-  res.status(201).json(user);
+  // insert username into collection
+  await req.db.collection("users").insertOne({ email, password: hashedPassword, username });
 
+  // send message indicating success
+  res.status(201).send({ message: "success" });
 });
 
 export default handler;

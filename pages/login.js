@@ -8,7 +8,7 @@ import styles from "../styles/account.module.css"
 import { useState } from "react";
 import Router from "next/router";
 
-export default function Register(props) {
+export default function Login(props) {
 
   const [alertMsg, setAlertMsg] = useState(null);
 
@@ -17,12 +17,10 @@ export default function Register(props) {
 
     const data = {
       username: e.currentTarget.username.value,
-      email: e.currentTarget.email.value,
-      password: e.currentTarget.password.value,
-      confirmPassword: e.currentTarget.confirmPassword.value,
+      password: e.currentTarget.password.value
     };
 
-    const res = await fetch("/api/users", {
+    const res = await fetch("/api/sessions", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -49,27 +47,17 @@ export default function Register(props) {
         <form onSubmit={handleSubmit} className={styles.form}>
 
           <div className={styles.row}>
-            <label className={styles.label} htmlFor="username">Choose a username:</label>
-            <input className={styles.input} id="username" type="text" required></input>
+            <label className={styles.label} htmlFor="username">Username:</label>
+            <input className={styles.input} id="username" type="text"></input>
           </div>
 
           <div className={styles.row}>
-            <label className={styles.label} htmlFor="email">Your email:</label>
-            <input className={styles.input} id="email" type="email" required></input>
-          </div>
-
-          <div className={styles.row}>
-            <label className={styles.label} htmlFor="password">Your password:</label>
-            <input className={styles.input} id="password" type="password" required></input>
-          </div>
-
-          <div className={styles.row}>
-            <label className={styles.label} htmlFor="confirmPassword">Confirm password:</label>
-            <input className={styles.input} id="confirmPassword" type="password" required></input>
+            <label className={styles.label} htmlFor="password">Password:</label>
+            <input className={styles.input} id="password" type="password"></input>
           </div>
 
           <div className={styles.btnDiv}>
-            <button type="submit" className={utilStyles.btn}>Create an account</button>
+            <button type="submit" className={utilStyles.btn}>Log in</button>
             <Link href="/">
               <a>
                 <button type="button" className={utilStyles.btn}>Go back</button>

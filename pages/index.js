@@ -5,7 +5,6 @@ import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import indexStyles from '../styles/index.module.css'
 
-
 export default function Home({ allPostsData }) {
 
   return (
@@ -31,7 +30,7 @@ export default function Home({ allPostsData }) {
 
           <Link href="/login">
             <a>
-              <button className={utilStyles.btn}>Login</button>
+              <button className={utilStyles.btn}>Log in</button>
             </a>
           </Link>
         </div>
