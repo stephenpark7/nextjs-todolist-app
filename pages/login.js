@@ -1,5 +1,7 @@
-import Layout from "../components/layout"
+import Head from "next/head"
 import Link from "next/link"
+
+import Layout, { siteTitle } from "../components/layout"
 import Alert from "../components/alert"
 
 import utilStyles from "../styles/utils.module.css"
@@ -8,8 +10,11 @@ import styles from "../styles/account.module.css"
 import { useState } from "react";
 import Router from "next/router";
 
+import { useUser } from "../lib/hooks";
+
 export default function Login(props) {
 
+  const [user, { mutate } ] = useUser();
   const [alertMsg, setAlertMsg] = useState(null);
 
   async function handleSubmit(e) {
@@ -20,7 +25,7 @@ export default function Login(props) {
       password: e.currentTarget.password.value
     };
 
-    const res = await fetch("/api/sessions", {
+    const res = await fetch("/api/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -28,15 +33,21 @@ export default function Login(props) {
         body: JSON.stringify(data)
     });
 
-    if (res.status === 201) {
+    if (res.status === 200) {
+      const userObj = await res.json();
+      mutate(userObj);
       Router.push("/");
     } else {
-      setAlertMsg(await res.text());
+      console.log(res);
+      setAlertMsg("Incorrect username or password.");
     }
   }
 
   return (
     <Layout>
+      <Head>
+        <title>Sign in</title>
+      </Head>
 
       <Alert type="error">
         {alertMsg && alertMsg}

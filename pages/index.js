@@ -5,8 +5,9 @@ import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import indexStyles from '../styles/index.module.css'
 
-export default function Home({ allPostsData }) {
+import { useUser } from "../lib/hooks";
 
+function Home({ allPostsData }) {
   return (
     <Layout home>
       <Head>
@@ -39,3 +40,10 @@ export default function Home({ allPostsData }) {
     </Layout>
   )
 }
+
+// Home.getInitialProps = async (ctx) => {
+//   console.log("Hi")
+//   return 
+// }
+
+export default Home;

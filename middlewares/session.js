@@ -8,9 +8,9 @@ const MongoStore = connectMongo({ Store, MemoryStore });
 export default function (req, res, next) {
   const mongoStore = new MongoStore({
     client: req.dbClient,
-    stringify: false
+    stringify: false,
   });
   return session({
-    store: promisifyStore(mongoStore)
+    store: promisifyStore(mongoStore),
   })(req, res, next);
 }
