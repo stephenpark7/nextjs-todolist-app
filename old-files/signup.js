@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
 
-import Layout from "../components/layout"
+import Layout, { siteTitle } from "../components/layout"
 import Alert from "../components/alert"
 
 import utilStyles from "../styles/utils.module.css"
@@ -10,9 +10,18 @@ import styles from "../styles/account.module.css"
 import { useState } from "react";
 import Router from "next/router";
 
+import { useUser } from "../lib/hooks";
+
 export default function Register(props) {
 
+  const [user, { mutate }] = useUser();
   const [alertMsg, setAlertMsg] = useState(null);
+
+  // console.log(user);
+
+  //   useEffect(() => {
+  //     if (user) Router.push("/");
+  //   }, [user]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -30,7 +39,8 @@ export default function Register(props) {
     });
 
     if (res.status === 201) {
-      // CHANGE THIS -- should redirect to dashboard
+      const userObj = await res.json();
+      mutate(userObj);
       Router.push("/");
     } else {
       setAlertMsg(await res.text());

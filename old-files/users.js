@@ -39,8 +39,7 @@ handler.post(async (req, res) => {
   // insert username into collection
   const user = await req.db
     .collection("users")
-    .insertOne({ email, password: hashedPassword, name })
-    .then(({ ops }) => ops[0]);
+    .insertOne({ email, password: hashedPassword, name });
 
   req.logIn(user, (err) => {
     if (err) throw err;
@@ -49,6 +48,19 @@ handler.post(async (req, res) => {
     });
   });
 
+  // req.logIn(user, err => {
+  //   if (err) {
+  //     console.log(err);
+  //     res.status(400).send(err);
+  //     return;
+  //   }
+  //   res.status(201).json({
+  //     user: extractUser(req)
+  //   });
+  // });
+
+  // send message indicating success
+  // res.status(201).send({ message: "success" });
 });
 
 export default handler;
