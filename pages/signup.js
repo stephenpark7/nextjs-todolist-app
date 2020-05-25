@@ -30,7 +30,6 @@ export default function Register(props) {
     });
 
     if (res.status === 201) {
-      // CHANGE THIS -- should redirect to dashboard
       Router.push("/");
     } else {
       setAlertMsg(await res.text());

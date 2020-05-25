@@ -1,7 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
 
-import Layout, { siteTitle } from "../components/layout"
+import Layout from "../components/layout"
 import Alert from "../components/alert"
 
 import utilStyles from "../styles/utils.module.css"
@@ -31,10 +31,8 @@ export default function Login(props) {
     });
 
     if (res.status === 200) {
-      // CHANGE THIS -- redirect to dashboard
       Router.push("/");
     } else {
-      console.log(res);
       setAlertMsg("Incorrect username or password.");
     }
   }

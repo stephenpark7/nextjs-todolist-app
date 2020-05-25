@@ -6,9 +6,27 @@ import utilStyles from "../styles/utils.module.css"
 import indexStyles from "../styles/index.module.css"
 
 import { useCurrentUser } from "../lib/hooks";
+import { useEffect, useState } from "react";
 
-export default function Home({ allPostsData }) {
+export default function Home() {
   const [user] = useCurrentUser();
+  const [getTaskList, setTaskList] = useState(null);
+
+  useEffect(() => {
+    loadTaskList();
+  }, []);
+
+  async function loadTaskList() {
+    const res = await fetch("/api/tasks");
+
+    if (res.status === 200) {
+      const result = await res.json();
+      setTaskList(result);
+      //console.log(result);
+    } else {
+      console.log("errror!!")
+    }
+  }
 
   return (
     <Layout>
@@ -31,7 +49,7 @@ export default function Home({ allPostsData }) {
         )}
       </section>
 
-      {!user ? (
+      {!getTaskList ? (
         <section className={utilStyles.headingMd}>
           <div className={indexStyles.btnDiv}>
               <Link href="/signup">
@@ -49,16 +67,47 @@ export default function Home({ allPostsData }) {
       ) : (
         <section className={utilStyles.headingMd}>
           <ul className={indexStyles.ul}>
-            <li>Hit the gym</li>
-            <li className={indexStyles.checked}>Pay bills</li>
-            <li>Meet George</li>
-            <li>Buy eggs</li>
-            <li>Read a book</li>
-            <li>Organize office</li>
+            {getTaskList.map(task => {
+              return <li key={task.name}>{task.name}</li>;
+            })}
           </ul>
+          <input id="inputTask" type="text"></input>
+          <button type="button" onClick={addNewTask}>Add new task</button>
         </section>
       )}
 
     </Layout>
   )
+
+  async function addNewTask() {
+    const taskName = document.getElementById("inputTask").value;
+
+    const data = {
+      name: taskName,
+      deadline: null,
+      progress: null
+    }
+
+    const res = await fetch("/api/tasks", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    });
+
+    if (res.status === 200) {
+      document.getElementById("inputTask").value = null;
+      loadTaskList(); // prob better to just do it locally instead of fetching
+    } else {
+      console.log("errror!!")
+    }
+  }
 }
+
+// <li>Hit the gym</li>
+// <li className={indexStyles.checked}>Pay bills</li>
+// <li>Meet George</li>
+// <li>Buy eggs</li>
+// <li>Read a book</li>
+// <li>Organize office</li>
