@@ -6,3 +6,41 @@
   margin: auto;
   width: 210px;
 }
+
+.tasks {
+  padding: 12px 8px 12px 40px;
+  background-color: #333;
+  color: white;
+}
+
+.ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  list-style: none; 
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.ul li:hover {
+  background: #ddd;
+}
+
+.ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}

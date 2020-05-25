@@ -10,18 +10,15 @@ import styles from "../styles/account.module.css"
 import { useState } from "react";
 import Router from "next/router";
 
-import { useUser } from "../lib/hooks";
-
 export default function Login(props) {
 
-  const [user, { mutate } ] = useUser();
   const [alertMsg, setAlertMsg] = useState(null);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     const data = {
-      username: e.currentTarget.username.value,
+      email: e.currentTarget.email.value,
       password: e.currentTarget.password.value
     };
 
@@ -34,8 +31,7 @@ export default function Login(props) {
     });
 
     if (res.status === 200) {
-      const userObj = await res.json();
-      mutate(userObj);
+      // CHANGE THIS -- redirect to dashboard
       Router.push("/");
     } else {
       console.log(res);
@@ -58,8 +54,8 @@ export default function Login(props) {
         <form onSubmit={handleSubmit} className={styles.form}>
 
           <div className={styles.row}>
-            <label className={styles.label} htmlFor="username">Username:</label>
-            <input className={styles.input} id="username" type="text"></input>
+            <label className={styles.label} htmlFor="email">Email:</label>
+            <input className={styles.input} id="email" type="text"></input>
           </div>
 
           <div className={styles.row}>
