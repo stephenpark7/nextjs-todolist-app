@@ -8,6 +8,7 @@ const handler = nextConnect();
 handler.use(middleware);
 
 handler.get(async (req, res) => {
+
   if (!req.user) {
     return res.status(401).send("unauthenticated");
   }
@@ -16,6 +17,8 @@ handler.get(async (req, res) => {
     .collection("users")
     .find( { _id: { $eq: req.user._id } })
     .toArray();
+
+console.log(result[0]);
 
   res.status(200).json(result[0].tasks);
 });

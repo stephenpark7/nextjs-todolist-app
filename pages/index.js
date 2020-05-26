@@ -17,14 +17,19 @@ export default function Home() {
   }, []);
 
   async function loadTaskList() {
-    const res = await fetch("/api/tasks");
+    try {
+      const res = await fetch("/api/tasks");
 
-    if (res.status === 200) {
-      const result = await res.json();
-      setTaskList(result);
-      //console.log(result);
-    } else {
-      console.log("errror!!")
+      if (res.status === 200) {
+        const result = await res.json();
+        setTaskList(result);
+        //console.log(result);
+      } else {
+        console.log("errror!!")
+      }
+    }
+    catch(e) {
+      console.log(e);
     }
   }
 
@@ -72,12 +77,20 @@ export default function Home() {
             })}
           </ul>
           <input id="inputTask" type="text"></input>
-          <button type="button" onClick={addNewTask}>Add new task</button>
+          <button type="button" onClick={addNewTask}>Add new task</button><br />
+          <button type="button" onClick={logout}>Logout</button>
         </section>
       )}
 
     </Layout>
   )
+
+  async function logout() {
+    await fetch('/api/auth', {
+      method: 'DELETE',
+    });
+    res.Link
+  }
 
   async function addNewTask() {
     const taskName = document.getElementById("inputTask").value;
