@@ -18,8 +18,6 @@ handler.get(async (req, res) => {
     .find( { _id: { $eq: req.user._id } })
     .toArray();
 
-console.log(result[0]);
-
   res.status(200).json(result[0].tasks);
 });
 
