@@ -4,108 +4,97 @@ import Layout, { siteTitle } from "../components/layout"
 
 import utilStyles from "../styles/utils.module.css"
 import indexStyles from "../styles/index.module.css"
+import dashboardStyles  from "../styles/dashboard.module.css"
 
-import { useCurrentUser } from "../lib/hooks";
-import { useEffect, useState } from "react";
+import { getCurrentUser, getTaskList } from "../lib/hooks";
 
-import axios from "axios";
+export default function Home() {
 
-export default function Dashboard() {
+  const [user] = getCurrentUser();
+  const { tasks, mutate } = getTaskList();
 
-  const [isLoaded, setLoaded] = useState(null);
-  const [getUser, setUser] = useState(null);
-  
-  const [getTaskList, setTaskList] = useState(null);
+  // ADD A NEW TASK
+  async function addNewTask() {
 
+    const inputTask = document.getElementById("inputTask");
 
-  useEffect(() => {
-    async function getUserData() {
-      try {
-        const res = await axios.get("/api/user");
-        setUser(res.data.user);
-      }
-      catch (err) {
-        console.log(err);
-      }
-    }
-    getUserData();
-  }, []);
+    const data = {
+      taskName: inputTask.value
+    };
 
-  console.log(getUser);
-
-  return (
-    <Layout>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
-
-      <section className={utilStyles.headingMd}>
-        {!isLoaded ? (
-          <p>
-            What are you waiting for? Just do it. Try this app out - it will help you achieve
-            the goals that you have been putting off this whole time.
-          </p>
-        ) : (
-          <div className={indexStyles.tasks}>
-            Tasks
-          </div>
-        )}
-      </section>
-
-      {!isLoaded ? (
-        <section className={utilStyles.headingMd}>
-          <div className={indexStyles.btnDiv}>
-              <Link href="/signup">
-                <a>
-                  <button className={utilStyles.btn}>Sign up</button>
-                </a>
-              </Link>
-              <Link href="/login">
-                <a>
-                  <button className={utilStyles.btn}>Log in</button>
-                </a>
-              </Link>
-          </div>
-        </section>
-      ) : (
-        <section className={utilStyles.headingMd}>
-          <ul className={indexStyles.ul}>
-            {getTaskList && getTaskList.map(task => {
-              return <li key={task.name}>{task.name}</li>;
-            })}
-          </ul>
-          <input id="inputTask" type="text"></input>
-          <button type="button" onClick={addNewTask}>Add new task</button><br />
-          <button type="button" onClick={handleLogout}>Logout</button>
-        </section>
-      )}
-
-    </Layout>
-  )
-
-  function addNewTask() {
-
-  }
-
-  async function handleLogout() {
-    await fetch('/api/auth', {
-      method: 'DELETE',
+    const res = await fetch("/api/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
     });
+
+    if (res.status === 201) {
+      inputTask.value = "";
+      mutate(tasks);
+    }
+
   }
+
+  // DELETE A TASK
+  async function deleteTask(id) {
+
+    const res = await fetch("/api/tasks", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({taskId: id})
+    });
+
+    if (res.status === 201) {
+      mutate(tasks);
+    }
+
+  }
+
+  // RENDER
+  return (
+    <>
+      {user !== undefined ?
+        <Layout>
+          <Head>
+            <title>{siteTitle}</title>
+          </Head>
+
+          <section className={utilStyles.headingMd}>
+            <div className={dashboardStyles.tasks}>
+              Tasks
+            </div>
+          </section>
+
+          <section className={utilStyles.headingMd}>
+            <ul className={dashboardStyles.ul}>
+              {tasks && tasks.map(task => {
+                return <li className={dashboardStyles.li} key={task._id}>{task.name}
+                <button className={dashboardStyles.taskBtn} type="button" onClick={() => deleteTask(task._id)}>X</button></li>;
+              })}
+            </ul>
+
+            <br />
+            <input className={dashboardStyles.input} id="inputTask" type="text" placeholder="Task name"></input>
+            <button className={dashboardStyles.addNewTaskBtn} type="button" onClick={addNewTask}>
+              Add new task
+            </button><br />
+
+            <br />
+            <Link href="/">
+              <a>
+                <button className={dashboardStyles.goBackBtn}>Go back</button>
+              </a>
+            </Link>
+
+          </section>
+        </Layout>
+      : 
+        <Layout>
+          <section className={utilStyles.headingMdCentered}>
+            Loading...
+          </section>
+        </Layout>
+      }
+    </>
+  )
 }
-
-// export async function getStaticProps() {
-//   let data = {
-//     user: null,
-//     taskList: []
-//   }
-
-//   const res = await fetch("http://localhost:3000/api/user");
-//   const userData = await res.json();
-
-//   data.user = userData.user;
-
-//   console.log(userData);
-
-//   return { props: { data } };
-// }

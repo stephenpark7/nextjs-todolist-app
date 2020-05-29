@@ -1,0 +1,93 @@
+.tasks {
+  padding: 8px 8px 8px 40px;
+  background-color: #333;
+  color: white;
+}
+
+.ul {
+  margin: 0;
+  padding: 0;
+}
+
+.ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  list-style: none; 
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.ul li:hover {
+  background: #ddd;
+}
+
+.ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+
+.taskBtn {
+  color: #333;
+  padding: .75em 1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: .2s all;
+
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+.taskBtn:hover {
+  color: white;
+  background-color: rgb(209, 0, 0);
+}
+
+.goBackBtn {
+  width: 100%;
+  color: white;
+  background-color: rgb(75, 90, 109);
+  padding: 1em 1.5em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: .2s all;
+}
+
+.goBackBtn:hover {
+  background-color: rgb(55, 66, 82);
+}
+
+.input {
+  padding: .8em;
+  width: 75%;
+}
+
+.addNewTaskBtn {
+  width: 25%;
+  color: white;
+  background-color: rgb(75, 90, 109);
+  padding: 1em 1.5em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  transition: .2s all;
+}
+
+.addNewTaskBtn:hover {
+  background-color: rgb(55, 66, 82);
+}

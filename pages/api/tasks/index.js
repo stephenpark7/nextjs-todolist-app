@@ -1,12 +1,10 @@
 import nextConnect from "next-connect";
 import middleware from "../../../middlewares/middleware";
-// import passport from "../../lib/passport";
-// import { extractUser } from "../../lib/api-helpers";
 
 const handler = nextConnect();
-
 handler.use(middleware);
 
+// GET TASKS
 handler.get(async (req, res) => {
 
   if (!req.user) {
@@ -14,28 +12,52 @@ handler.get(async (req, res) => {
   }
 
   const result = await req.db
-    .collection("users")
-    .find( { _id: { $eq: req.user._id } })
+    .collection("tasks")
+    .find( { owner: { $eq: req.user._id } })
     .toArray();
 
-  res.status(200).json(result[0].tasks);
+  //console.log(result);
+
+  res.status(200).json(result);
 });
 
+// ADD TASKS
 handler.post(async (req, res) => {
+
   if (!req.user) {
     return res.status(401).send("unauthenticated");
   }
 
-  await req.db
-    .collection("users")
-    .updateOne({ _id: req.user._id},
-            { $push: {
-              tasks: req.body
-            }});
+  const taskName = req.body.taskName;
 
-  res.status(200).json({
-    message: "success"
-  });
+  const result = await req.db
+    .collection("tasks")
+    .insertOne({ 
+      owner: req.user._id,
+      name: taskName
+     });
+
+  if (result.insertedCount > 0) {
+    res.status(201).json({ message: "success" });
+  }
+});
+
+// DELETE TASKS
+handler.delete(async (req, res) => {
+
+  if (!req.user) {
+    return res.status(401).send("unauthenticated");
+  }
+
+  const taskId = req.body.taskId;
+
+  const result = await req.db
+    .collection("tasks")
+    .deleteOne( { _id: new req.objectID(taskId) });
+
+  if (result.deletedCount > 0) {
+    res.status(201).json({ message: "success" });
+  }
 });
 
 export default handler;

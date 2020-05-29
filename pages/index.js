@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      {user !== undefined ? (
+      {user !== undefined ?
         <Layout>
           <Head>
             <title>{siteTitle}</title>
@@ -28,18 +28,20 @@ export default function Home() {
 
           <section className={utilStyles.headingMd}>
             <div className={indexStyles.btnDiv}>
-              <Link href="/signup">
-                <a>
-                  <button className={utilStyles.btn}>Sign up</button>
-                </a>
-              </Link>
+              {user === null ?
+                <Link href="/signup">
+                  <a>
+                    <button className={utilStyles.btn}>Sign up</button>
+                  </a>
+                </Link> : <></>
+              }
               {user === null ? 
                 <Link href="/login">
                   <a>
                     <button className={utilStyles.btn}>Log in</button>
                   </a>
                 </Link>
-               : (
+               : 
                 <>
                   <Link href="/dashboard">
                     <a>
@@ -48,13 +50,13 @@ export default function Home() {
                   </Link>
                   <button className={utilStyles.btn} type="button" onClick={handleLogout}>Logout</button>
                 </>
-              )}
+              }
             </div>
           </section>
         </Layout>
-      ) : 
+      : 
         <Layout>
-          <section className={utilStyles.headingMd}>
+          <section className={utilStyles.headingMdCentered}>
             Loading...
           </section>
         </Layout>
