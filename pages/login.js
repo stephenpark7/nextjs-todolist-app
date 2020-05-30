@@ -32,7 +32,7 @@ export default function Login(props) {
     });
 
     if (res.status === 200) {
-      Router.push("/");
+      Router.push("/dashboard");
     } else {
       setAlertMsg("Incorrect username or password.");
     }
