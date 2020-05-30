@@ -14,6 +14,7 @@ export default function Login(props) {
 
   const [alertMsg, setAlertMsg] = useState(null);
 
+  // LOGIN
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -37,6 +38,7 @@ export default function Login(props) {
     }
   }
 
+  // RENDER
   return (
     <Layout>
       <Head>

@@ -5,13 +5,14 @@ import bcrypt from "bcryptjs";
 import middleware from "../../middlewares/middleware";
 import { extractUser } from '../../lib/api-helpers';
 
+// MIDDLEWARE
 const handler = nextConnect();
 handler.use(middleware);
 
-// GET /api/users
+// GET USER DATA
 handler.get(async (req, res) => res.json({ user: extractUser(req) }));
 
-// POST /api/users
+// CREATE USER ACCOUNT
 handler.post(async (req, res) => {
 
   const { name, password } = req.body;

@@ -1,6 +1,7 @@
 import nextConnect from "next-connect";
 import middleware from "../../middlewares/middleware";
 
+// MIDDLEWARE
 const handler = nextConnect();
 handler.use(middleware);
 
@@ -15,8 +16,6 @@ handler.get(async (req, res) => {
     .collection("tasks")
     .find( { owner: { $eq: req.user._id } })
     .toArray();
-
-  //console.log(result);
 
   res.status(200).json(result);
 });
