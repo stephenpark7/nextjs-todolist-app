@@ -6,8 +6,10 @@ import middleware from "../../middlewares/middleware";
 import { extractUser } from '../../lib/api-helpers';
 
 const handler = nextConnect();
-
 handler.use(middleware);
+
+// GET /api/users
+handler.get(async (req, res) => res.json({ user: extractUser(req) }));
 
 // POST /api/users
 handler.post(async (req, res) => {

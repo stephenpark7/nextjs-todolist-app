@@ -11,6 +11,15 @@ export default function Home() {
 
   const [user, { mutate } ] = getCurrentUser();
 
+  // LOGOUT
+  async function handleLogout() {
+    await fetch('/api/auth', {
+      method: 'DELETE',
+    });
+    mutate(null);
+  }
+
+  // RENDER
   return (
     <>
       {user !== undefined ?
@@ -63,11 +72,4 @@ export default function Home() {
       }
     </>
   )
-
-  async function handleLogout() {
-    await fetch('/api/auth', {
-      method: 'DELETE',
-    });
-    mutate(null);
-  }
 }
