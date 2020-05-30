@@ -2,13 +2,16 @@ import Head from "next/head"
 import Link from "next/link"
 import Layout, { siteTitle } from "../components/layout"
 
-import utilStyles from "../styles/utils.module.css"
-import indexStyles from "../styles/index.module.css"
+import Container from "react-bootstrap/Container";
+import Button from "react-bootstrap/Button";
+
+import indexStyles from "../styles/index.module.css";
 
 import { getCurrentUser } from "../lib/hooks";
 
 export default function Home() {
 
+  // USER STATE
   const [user, { mutate } ] = getCurrentUser();
 
   // LOGOUT
@@ -28,46 +31,44 @@ export default function Home() {
             <title>{siteTitle}</title>
           </Head>
 
-          <section className={utilStyles.headingMd}>
+          <Container>
             <p>
-              What are you waiting for? Just do it. Try this app out - it will help you achieve
-              the goals that you have been putting off this whole time.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultricies massa nec mi mollis, 
+              at tincidunt tortor lobortis. Aenean vel massa at eros suscipit suscipit non id metus. Phasellus eget pharetra metus. 
             </p>
-          </section>
-
-          <section className={utilStyles.headingMd}>
-            <div className={indexStyles.btnDiv}>
-              {user === null ?
-                <Link href="/signup">
+          </Container>
+          
+          <section className={indexStyles.btns}>
+            {user === null ?
+              <Link href="/signup">
+                <a>
+                  <Button>Sign up</Button>
+                </a>
+              </Link> : <></>
+            }
+            {user === null ? 
+              <Link href="/login">
+                <a>
+                  <Button>Log in</Button>
+                </a>
+              </Link>
+              : 
+              <>
+                <Link href="/dashboard">
                   <a>
-                    <button className={utilStyles.btn}>Sign up</button>
-                  </a>
-                </Link> : <></>
-              }
-              {user === null ? 
-                <Link href="/login">
-                  <a>
-                    <button className={utilStyles.btn}>Log in</button>
+                    <Button>Dashboard</Button>
                   </a>
                 </Link>
-               : 
-                <>
-                  <Link href="/dashboard">
-                    <a>
-                      <button className={utilStyles.btn}>Dashboard</button>
-                    </a>
-                  </Link>
-                  <button className={utilStyles.btn} type="button" onClick={handleLogout}>Logout</button>
-                </>
-              }
-            </div>
+                <Button type="button" onClick={handleLogout}>Logout</Button>
+              </>
+            }
           </section>
         </Layout>
       : 
         <Layout>
-          <section className={utilStyles.headingMdCentered}>
+          <Container>
             Loading...
-          </section>
+          </Container>
         </Layout>
       }
     </>

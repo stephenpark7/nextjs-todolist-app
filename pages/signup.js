@@ -4,11 +4,15 @@ import Link from "next/link"
 import Layout from "../components/layout"
 import Alert from "../components/alert"
 
-import utilStyles from "../styles/utils.module.css"
-import styles from "../styles/account.module.css"
+import Container from "react-bootstrap/Container"
+import Button from "react-bootstrap/Button"
+import InputGroup from "react-bootstrap/InputGroup"
+import FormControl from "react-bootstrap/FormControl"
 
-import { useState } from "react";
-import Router from "next/router";
+import styles from "../styles/index.module.css"
+
+import { useState } from "react"
+import Router from "next/router"
 
 export default function Register(props) {
 
@@ -46,37 +50,39 @@ export default function Register(props) {
         {alertMsg && alertMsg}
       </Alert>
 
-      <section className={styles.container}>
+      <Container>
 
-        <form onSubmit={handleSubmit} className={styles.form}>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultricies massa nec mi mollis.
+        </p>
+
+        <form onSubmit={handleSubmit}>
           
-        <div className={styles.row}>
-            <label className={styles.label} htmlFor="name">Your name:</label>
-            <input className={styles.input} id="name" type="name" required></input>
-          </div>
+          <InputGroup size="md" className="mb-3">
+            <FormControl id="name" aria-label="name" placeholder="Your name" required aria-describedby="inputGroup-sizing-md" />
+          </InputGroup>
 
-          <div className={styles.row}>
-            <label className={styles.label} htmlFor="email">Your email:</label>
-            <input className={styles.input} id="email" type="email" required></input>
-          </div>
+          <InputGroup size="md" className="mb-3">
+            <FormControl id="email" type="email" placeholder="Email address" required aria-label="email" aria-describedby="inputGroup-sizing-md" />
+          </InputGroup>
 
-          <div className={styles.row}>
-            <label className={styles.label} htmlFor="password">Your password:</label>
-            <input className={styles.input} id="password" type="password" required></input>
-          </div>
+          <InputGroup size="md" className="mb-3">
+            <FormControl id="password" type="password" placeholder="Password" required aria-label="password" aria-describedby="inputGroup-sizing-md" />
+          </InputGroup>
 
-          <div className={styles.btnDiv}>
-            <button type="submit" className={utilStyles.btn}>Sign up</button>
+          <div className={styles.btns}>
+            <Button type="submit">Sign up</Button>
             <Link href="/">
               <a>
-                <button type="button" className={utilStyles.btn}>Go back</button>
+                <Button type="button">Go back</Button>
               </a>
             </Link>
           </div>
 
         </form>
         
-      </section>
+      </Container>
+
     </Layout>
   )
 }

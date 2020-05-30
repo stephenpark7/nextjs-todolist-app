@@ -1,8 +1,8 @@
 import { MongoClient, ObjectID } from "mongodb";
 
 const client = new MongoClient(process.env.MONGODB_URI, {
-  useUnifiedTopology: true,
   useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
 
 export default async function (req, res, next) {

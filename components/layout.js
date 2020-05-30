@@ -1,26 +1,25 @@
 import Head from 'next/head'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
+import layoutStyles from './layout.module.css'
+// import utilStyles from '../styles/utils.module.css'
 
-export const siteTitle = 'JUST DO IT | The App To Help You Get Started'
-const headerTitle = "JUST DO IT";
+import Container from "react-bootstrap/Container";
+
+export const siteTitle = "To Do List"
+const headerTitle = "To Do List";
 
 export default function Layout({ children, home }) {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <link rel="icon" href="/favicon.ico" />
-        <meta
-          name="description"
-          content="todolist"
-        />
-        <meta name="og:title" content={siteTitle} />
-        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="description" content="todolist" />
       </Head>
-      <header className={styles.header}>
-        <h1 className={utilStyles.heading2Xl}>{headerTitle}</h1>
+
+      <header className={layoutStyles.header}>
+        <h1>{headerTitle}</h1>
       </header>
+
       <main>{children}</main>
-    </div>
+    </>
   )
 }
