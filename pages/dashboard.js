@@ -10,13 +10,11 @@ import Table from "react-bootstrap/Table"
 
 import dashboardStyles from "../styles/dashboard.module.css"
 
-import cn from "classnames";
-
 import { getCurrentUser, getTaskList } from "../lib/hooks";
 
 export default function Home() {
 
-  const [user] = getCurrentUser();
+  //const [user] = getCurrentUser();
   const { tasks, mutate } = getTaskList();
 
   // ADD A NEW TASK
@@ -77,7 +75,7 @@ export default function Home() {
   // RENDER
   return (
     <>
-      {user !== undefined ?
+      {tasks !== undefined ?
         <Layout>
           <Head>
             <title>{siteTitle}</title>
@@ -138,7 +136,9 @@ export default function Home() {
         </Layout>
       : 
         <Layout>
-          Loading...
+          <Container>
+            Loading...
+          </Container>
         </Layout>
       }
     </>
