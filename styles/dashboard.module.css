@@ -1,50 +1,14 @@
-.ul {
-  margin: 0;
-  padding: 0;
-}
-
-.ul li {
-  cursor: pointer;
-  position: relative;
-  padding: 12px 8px 12px 40px;
-  background: #EEE;
-  font-size: 18px;
-  transition: 0.2s;
-  list-style: none; 
-
-  /* make the list items unselectable */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.ul li:hover {
-  background: #ddd;
-}
-
-.ul li.checked {
-  background: #888;
-  color: #fff;
-  text-decoration: line-through;
-}
-
-.ul li .taskBtn {
-  position: absolute;
-  right: 8px;
-  top: 8px;
-}
-
-.goBackBtn {
-  width: 100%;
-}
-
 .taskTable tbody th:first-child,
 .taskTable tbody td:first-child {
     cursor: pointer;
     width: 50px;
     text-align: center;
     color: rgba(0, 0, 0, 0.25);
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .taskTable tbody th:last-child,
@@ -72,4 +36,8 @@
 
 .taskTable tbody .datePicker input {
   width: 180px;
+}
+
+.goBackBtn {
+  width: 100%;
 }

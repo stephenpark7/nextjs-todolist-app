@@ -10,11 +10,10 @@ import Table from "react-bootstrap/Table"
 
 import dashboardStyles from "../styles/dashboard.module.css"
 
-import { getCurrentUser, getTaskList } from "../lib/hooks";
+import { getTaskList } from "../lib/hooks";
 
 export default function Home() {
 
-  //const [user] = getCurrentUser();
   const { tasks, mutate } = getTaskList();
 
   // ADD A NEW TASK
@@ -110,15 +109,6 @@ export default function Home() {
               </tbody>
             </Table>
 
-
-            {/* <ul className={dashboardStyles.ul}>
-              {tasks && tasks.map(task => {
-                return <li className={dashboardStyles.li} key={task._id}><span onClick={() => toggleTask(task._id)}>{task.name}</span>
-                <Button variant="secondary" className={dashboardStyles.taskBtn} type="button" onClick={() => deleteTask(task._id)}>X</Button></li>;
-              })}
-            </ul> */}
-
-            <br />
             <InputGroup size="md" className="mb-3">
               <FormControl id="inputTask" aria-label="taskname" placeholder="Task name" required aria-describedby="inputGroup-sizing-md" />
               <Button type="button" onClick={addNewTask}>

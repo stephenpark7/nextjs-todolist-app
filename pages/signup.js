@@ -18,6 +18,7 @@ export default function Register(props) {
 
   const [alertMsg, setAlertMsg] = useState(null);
 
+  // SIGN UP
   async function handleSubmit(e) {
     e.preventDefault();
 
