@@ -37,27 +37,23 @@ handler.put(async (req, res) => {
   }
 
   const taskId = req.query.id;
+  const done = (req.query.done === "true");
 
-  const findResult = await req.db
-    .collection("tasks")
-    .findOne( { _id: new req.objectID(taskId)} );
-
-  if (findResult) {
-    const result = await req.db
-    .collection("tasks")
-    .updateOne(
-      { 
-        _id: new req.objectID(taskId)
-      },
-      {
-        $set: { "done" : !findResult.done }
-      }
-    );
-
-    if (result.modifiedCount > 0) {
-      res.status(201).json({ message: "success" });
+  const result = await req.db
+  .collection("tasks")
+  .updateOne(
+    { 
+      _id: new req.objectID(taskId)
+    },
+    {
+      $set: { "done" : !done }
     }
+  );
+
+  if (result.modifiedCount > 0) {
+    res.status(201).json({ message: "success" });
   }
+
 });
 
 export default handler;

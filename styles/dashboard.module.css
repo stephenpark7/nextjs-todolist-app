@@ -35,7 +35,8 @@
 }
 
 .taskTable tbody .datePicker input {
-  width: 180px;
+  text-align: center;
+  width: 100%;
 }
 
 .goBackBtn {
