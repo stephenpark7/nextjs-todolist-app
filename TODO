@@ -8,8 +8,8 @@ TODO:
   ✔ Add loading... text before render for tasks @done(20-05-31 03:09)
   ✔ For toggling, maybe instead of using findOne(), we can just send the current value from the client @done(20-05-31 15:35)
   ✔ Date picker - make each date its own component @done(20-05-31 17:49)
+  ✔ If the name is clicked, you can edit name @done(20-05-31 19:25)
   ☐ Make the front end better
-    ☐ if the name is clicked, you can edit name 
     ☐ use local storage and save periodically instead of saving each time
   ☐ Use combination of client sessions + serverside
   ☐ Multiple tabs for different categories : | General | School | Work | Etc |

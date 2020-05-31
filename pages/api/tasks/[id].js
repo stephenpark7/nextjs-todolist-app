@@ -56,6 +56,24 @@ handler.put(async (req, res) => {
       res.status(201).json({ message: "success" });
     }
   }
+  else if (req.query.taskName) {
+    const newTaskName = req.query.taskName;
+
+    const result = await req.db
+    .collection("tasks")
+    .updateOne(
+      { 
+        _id: new req.objectID(taskId)
+      },
+      {
+        $set: { "name" : newTaskName }
+      }
+    );
+  
+    if (result.modifiedCount > 0) {
+      res.status(201).json({ message: "success" });
+    }
+  }
   else if (req.query.dueDate) {
     const date = parseInt(req.query.dueDate);
 

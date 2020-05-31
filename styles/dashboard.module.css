@@ -1,20 +1,24 @@
 .taskTable tbody th:first-child,
 .taskTable tbody td:first-child {
-    cursor: pointer;
-    width: 50px;
-    text-align: center;
-    color: rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  width: 50px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.25);
 
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.taskTable thead tr th {
+  vertical-align: middle;
 }
 
 .taskTable tbody th:last-child,
 .taskTable tbody td:last-child {
-    width: 50px;
-    text-align: center;
+  width: 50px;
+  text-align: center;
 }
 
 .taskTable tbody td,
@@ -41,4 +45,30 @@
 
 .goBackBtn {
   width: 100%;
+}
+
+.taskNameSpan {
+  cursor: pointer;
+  /* display: flex; */
+}
+
+.taskNameDiv {
+  display: flex;
+}
+
+.taskNameInput {
+  width: 100%;
+  padding: .5em;
+}
+
+.taskNameBtns {
+  float: right;
+}
+
+.confirmBtn {
+  /* min-width: 32px; */
+}
+
+.cancelBtn {
+  /* min-width: 32px; */
 }
