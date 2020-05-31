@@ -1,14 +1,20 @@
 TODO:
-  ✔ its really buggy - lets check over code (REWRITE PLZ) @done(20-05-28 22:50)
-  ✔ it should load instead of showing the buttons and w.e first before fetching @done(20-05-29 00:50)
-  ✔ move loading text to center @done(20-05-29 00:57)
-  ✔ get rid of warnings (the options .... is not supported and the open event is no longer supported) @done(20-05-29 11:30)
-  ☐ make the front end better
+  ✔ Its really buggy - lets check over code (REWRITE PLZ) @done(20-05-28 22:50)
+  ✔ It should load instead of showing the buttons and w.e first before fetching @done(20-05-29 00:50)
+  ✔ Move loading text to center @done(20-05-29 00:57)
+  ✔ Get rid of warnings (the options .... is not supported and the open event is no longer supported) @done(20-05-29 11:30)
+  ✔ Clean up / optimize CSS code @done(20-05-31 03:09)
+  ✔ If the box is clicked, you can toggle completed/incomplete @done(20-05-31 03:09)
+  ✔ Add loading... text before render for tasks @done(20-05-31 03:09)
+  ☐ Make the front end better
     ☐ if the name is clicked, you can edit name 
-    ☐ if the box is clicked, you can toggle completed/incomplete
     ☐ use local storage and save periodically instead of saving each time
-    ☐ add loading... text before render for tasks
-  ☐ use combination of client sessions + serverside
+  ☐ Use combination of client sessions + serverside
   ☐ Multiple tabs for different categories : | General | School | Work | Etc |
-  ☐ Clean up / optimize CSS code
+  ☐ If due date is close to today's date, it should change color (Yellow, Red, etc..)
+  ☐ 
+  ☐ 
+  ☐ 
+  ☐ 
+  ☐ 
   ☐ 

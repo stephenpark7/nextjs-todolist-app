@@ -38,3 +38,38 @@
 .goBackBtn {
   width: 100%;
 }
+
+.taskTable tbody th:first-child,
+.taskTable tbody td:first-child {
+    cursor: pointer;
+    width: 50px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.25);
+}
+
+.taskTable tbody th:last-child,
+.taskTable tbody td:last-child {
+    width: 50px;
+    text-align: center;
+}
+
+.taskTable tbody td,
+.taskTable tbody th {
+  vertical-align: middle;
+}
+
+.taskTable tbody .taskDone td:first-child {
+  color: rgba(0, 0, 0, 1);
+}
+
+.taskTable tbody .taskDone td:not(:first-child) {
+  text-decoration: line-through;
+}
+
+.taskTable tbody .datePicker {
+  width: 150px;
+}
+
+.taskTable tbody .datePicker input {
+  width: 180px;
+}
