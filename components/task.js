@@ -11,7 +11,7 @@ export default function Task( props ) {
   const [getTaskId, setTaskId] = useState(props.id);
   const [getTaskName, setTaskName] = useState(props.name);
   const [getTaskDone, setTaskDone] = useState(props.done);
-  const [getDate, setDate] = useState(null);
+  const [getDate, setDate] = useState(props.date);
 
   // TOGGLE TASK
   async function handleToggle() {
@@ -35,7 +35,19 @@ export default function Task( props ) {
 
   // CHANGE DUE DATE
   async function handleChange(date) {
-    setDate(date);
+    let dateInMs;
+    if (date !== null) {
+      dateInMs = date.getTime();
+    }
+    else {
+      dateInMs = 0;
+    }
+    const res = await fetch("/api/tasks/" + getTaskId + "?dueDate=" + dateInMs, {
+      method: "PUT"
+    });
+    if (res.status === 201) {
+      setDate(date);
+    }
   }
 
   // RENDER

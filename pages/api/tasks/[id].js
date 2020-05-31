@@ -37,21 +37,45 @@ handler.put(async (req, res) => {
   }
 
   const taskId = req.query.id;
-  const done = (req.query.done === "true");
 
-  const result = await req.db
-  .collection("tasks")
-  .updateOne(
-    { 
-      _id: new req.objectID(taskId)
-    },
-    {
-      $set: { "done" : !done }
+  if (req.query.done) {
+    const done = (req.query.done === "true");
+
+    const result = await req.db
+    .collection("tasks")
+    .updateOne(
+      { 
+        _id: new req.objectID(taskId)
+      },
+      {
+        $set: { "done" : !done }
+      }
+    );
+  
+    if (result.modifiedCount > 0) {
+      res.status(201).json({ message: "success" });
     }
-  );
+  }
+  else if (req.query.dueDate) {
+    const date = parseInt(req.query.dueDate);
 
-  if (result.modifiedCount > 0) {
-    res.status(201).json({ message: "success" });
+    const result = await req.db
+    .collection("tasks")
+    .updateOne(
+      { 
+        _id: new req.objectID(taskId)
+      },
+      {
+        $set: { "dueDate" : date }
+      }
+    );
+
+    if (result.modifiedCount > 0) {
+      res.status(201).json({ message: "success" });
+    }
+  }
+  else {
+    res.status(400).json({ message: "missing query parameters" });
   }
 
 });

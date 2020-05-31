@@ -68,7 +68,9 @@ export default function Home() {
               <tbody>
                 {tasks && tasks.map(task => {
                   return (
-                    <Task key={task._id} id={task._id} name={task.name} done={task.done} delete={handleDelete}></Task>
+                    <Task key={task._id} id={task._id} name={task.name} 
+                          done={task.done} date={task.dueDate && new Date(parseInt(task.dueDate))} 
+                          delete={handleDelete} />
                   )
                 })}
               </tbody>

@@ -7,6 +7,7 @@ TODO:
   ✔ If the box is clicked, you can toggle completed/incomplete @done(20-05-31 03:09)
   ✔ Add loading... text before render for tasks @done(20-05-31 03:09)
   ✔ For toggling, maybe instead of using findOne(), we can just send the current value from the client @done(20-05-31 15:35)
+  ✔ Date picker - make each date its own component @done(20-05-31 17:49)
   ☐ Make the front end better
     ☐ if the name is clicked, you can edit name 
     ☐ use local storage and save periodically instead of saving each time
@@ -19,4 +20,3 @@ TODO:
   ☐ 
   ☐ 
   ☐ 
-  ☐ Date picker - make each date its own component
