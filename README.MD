@@ -1,7 +1,9 @@
 # To Do List
 A full-stack web application made with Next.js and MongoDB.
 
-Demo Link: https://warm-lake-28354.herokuapp.com/dashboard
+Demo Link: https://warm-lake-28354.herokuapp.com
+
+<img src="https://i.imgur.com/bEtBPng.png">
 
 ## Features
 * Create an account / login / user authentication / sessions
