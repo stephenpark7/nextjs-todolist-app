@@ -80,6 +80,7 @@ export default function Task( props ) {
     });
     if (res.status === 201) {
       setDate(date);
+      props.setMutate();
     }
   }
 
