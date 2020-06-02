@@ -24,6 +24,7 @@ export default function Task( props ) {
     });
     if (res.status === 201) {
       setTaskDone(!getTaskDone);
+      props.setMutate();
     }
   }
 
@@ -42,6 +43,7 @@ export default function Task( props ) {
     if (res.status === 201) {
       setTaskName(newTaskName);
       setEditMode(false);
+      props.setMutate();
     }
   }
 
@@ -60,7 +62,7 @@ export default function Task( props ) {
         method: "DELETE"
     });
     if (res.status === 201) {
-      props.delete();
+      props.setMutate();
     }
   }
 

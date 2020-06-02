@@ -41,7 +41,7 @@ export default function Home() {
 
   }
 
-  function handleDelete() {
+  function handleMutate() {
     mutate(tasks);
   }
 
@@ -79,7 +79,7 @@ export default function Home() {
                       }}>
                       <Task key={task._id} id={task._id} name={task.name} 
                             done={task.done} date={task.dueDate && new Date(parseInt(task.dueDate))} 
-                            delete={handleDelete} />
+                            setMutate={handleMutate} />
                     </CSSTransition>
                   )
                 })}

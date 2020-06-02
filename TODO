@@ -10,14 +10,12 @@ TODO:
   ✔ Date picker - make each date its own component @done(20-05-31 17:49)
   ✔ If the name is clicked, you can edit name @done(20-05-31 19:25)
   ✔ Add animations when adding/removing task @done(20-06-02 01:16)
-  ☐ Make the front end better
-    ☐ use local storage and save periodically instead of saving each time
-  ☐ Use combination of client sessions + serverside
+  ✔ Toggling box doesn't persist after going back / mutate must persist @done(20-06-02 01:29)
   ☐ Multiple tabs for different categories : | General | School | Work | Etc |
   ☐ If due date is close to today's date, it should change color (Yellow, Red, etc..)
   ☐ Make performance better
     ☐ Use indexing for DB
     ☐ Make it so it only saves to the DB after a few seconds of no interaction from the user
-  ☐ Toggling box doesn't persist after going back
-  ☐ 
+  ☐ Use local storage and save periodically instead of saving each time
+  ☐ Use combination of client sessions + serverside
   ☐ 

@@ -30,7 +30,8 @@
   color: rgba(0, 0, 0, 1);
 }
 
-.taskTable tbody .taskDone td:not(:first-child) {
+.taskTable tbody .taskDone td .taskNameSpan,
+.taskTable tbody .taskDone td .taskNameInput {
   text-decoration: line-through;
 }
 
@@ -49,7 +50,6 @@
 
 .taskNameSpan {
   cursor: pointer;
-  /* display: flex; */
 }
 
 .taskNameDiv {
