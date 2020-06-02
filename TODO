@@ -9,6 +9,7 @@ TODO:
   ✔ For toggling, maybe instead of using findOne(), we can just send the current value from the client @done(20-05-31 15:35)
   ✔ Date picker - make each date its own component @done(20-05-31 17:49)
   ✔ If the name is clicked, you can edit name @done(20-05-31 19:25)
+  ✔ Add animations when adding/removing task @done(20-06-02 01:16)
   ☐ Make the front end better
     ☐ use local storage and save periodically instead of saving each time
   ☐ Use combination of client sessions + serverside
@@ -17,6 +18,6 @@ TODO:
   ☐ Make performance better
     ☐ Use indexing for DB
     ☐ Make it so it only saves to the DB after a few seconds of no interaction from the user
-  ☐ 
+  ☐ Toggling box doesn't persist after going back
   ☐ 
   ☐ 

@@ -1,6 +1,7 @@
 import Head from "next/head"
 import Link from "next/link"
 import Layout, { siteTitle } from "../components/layout"
+import Task from "../components/task";
 
 import Container from "react-bootstrap/Container"
 import Button from "react-bootstrap/Button"
@@ -8,12 +9,11 @@ import InputGroup from "react-bootstrap/InputGroup"
 import FormControl from "react-bootstrap/FormControl"
 import Table from "react-bootstrap/Table"
 
+import { CSSTransition, TransitionGroup } from "react-transition-group";
+
 import dashboardStyles from "../styles/dashboard.module.css"
 
 import { getTaskList } from "../lib/hooks";
-
-import { useState } from "react";
-import Task from "../components/task";
 
 export default function Home() {
 
@@ -65,15 +65,25 @@ export default function Home() {
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
+              <TransitionGroup component="tbody">
                 {tasks && tasks.map(task => {
                   return (
-                    <Task key={task._id} id={task._id} name={task.name} 
-                          done={task.done} date={task.dueDate && new Date(parseInt(task.dueDate))} 
-                          delete={handleDelete} />
+                    <CSSTransition
+                      key={task._id}
+                      timeout={500}
+                      classNames={{
+                        enter: dashboardStyles["fade-enter"],
+                        enterActive: dashboardStyles["fade-enter-active"],
+                        exit: dashboardStyles["fade-enter-exit"],
+                        exitActive: dashboardStyles["fade-exit-active"]
+                      }}>
+                      <Task key={task._id} id={task._id} name={task.name} 
+                            done={task.done} date={task.dueDate && new Date(parseInt(task.dueDate))} 
+                            delete={handleDelete} />
+                    </CSSTransition>
                   )
                 })}
-              </tbody>
+              </TransitionGroup>
             </Table>
 
             <InputGroup size="md" className="mb-3">
