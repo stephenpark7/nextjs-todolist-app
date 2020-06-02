@@ -11,6 +11,8 @@ TODO:
   ✔ If the name is clicked, you can edit name @done(20-05-31 19:25)
   ✔ Add animations when adding/removing task @done(20-06-02 01:16)
   ✔ Toggling box doesn't persist after going back / mutate must persist @done(20-06-02 01:29)
+  ☐ Add order index to tasks, Ex: 0, 1, 2, 3
+  ☐ Make tasks draggable and also to different tabs
   ☐ Multiple tabs for different categories : | General | School | Work | Etc |
   ☐ If due date is close to today's date, it should change color (Yellow, Red, etc..)
   ☐ Make performance better
@@ -18,4 +20,4 @@ TODO:
     ☐ Make it so it only saves to the DB after a few seconds of no interaction from the user
   ☐ Use local storage and save periodically instead of saving each time
   ☐ Use combination of client sessions + serverside
-  ☐ 
+  ☐ Maybe use modal windows for error messages such as if you try to add a new task without a name

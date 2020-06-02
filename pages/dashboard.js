@@ -23,6 +23,7 @@ export default function Home() {
   async function addNewTask() {
 
     const inputTask = document.getElementById("inputTask");
+    if (!inputTask.value) return;
 
     const data = {
       taskName: inputTask.value
