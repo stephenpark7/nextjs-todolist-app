@@ -42,7 +42,7 @@ export default function Register(props) {
   }
 
   return (
-    <Layout>
+    <Layout header="Sign Up">
       <Head>
         <title>Sign up</title>
       </Head>
@@ -54,7 +54,7 @@ export default function Register(props) {
       <Container>
 
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultricies massa nec mi mollis.
+          Create an account with us today! Quick and easy, just login with your email address.
         </p>
 
         <form onSubmit={handleSubmit}>

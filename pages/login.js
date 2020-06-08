@@ -44,7 +44,7 @@ export default function Login(props) {
 
   // RENDER
   return (
-    <Layout>
+    <Layout header="Log In">
       <Head>
         <title>Sign in</title>
       </Head>
@@ -56,7 +56,7 @@ export default function Login(props) {
       <Container>
 
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultricies massa nec mi mollis.
+          Please enter your account information to login:
         </p>
 
         <form onSubmit={handleSubmit}>

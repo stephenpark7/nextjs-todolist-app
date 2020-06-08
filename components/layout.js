@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 export const siteTitle = "To Do List"
 const headerTitle = "To Do List";
 
-export default function Layout({ children, home }) {
+export default function Layout({ children, header }) {
   return (
     <>
       <Head>
@@ -16,7 +16,7 @@ export default function Layout({ children, home }) {
       </Head>
 
       <header className={layoutStyles.header}>
-        <h1>{headerTitle}</h1>
+        <h1>{header ? header : headerTitle}</h1>
       </header>
 
       <main>{children}</main>

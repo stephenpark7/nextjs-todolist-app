@@ -21,3 +21,12 @@ TODO:
   ☐ Use local storage and save periodically instead of saving each time
   ☐ Use combination of client sessions + serverside
   ☐ Maybe use modal windows for error messages such as if you try to add a new task without a name
+  ☐ Add a task limit through serverside
+  ☐ Add hacker / bot protection
+  ☐ Use server side rendering with axios
+  ☐ Customizable changing the color
+  ☐ Use Moment JS
+IDEAS:
+  ☐ Maybe make it so that you can publicize things you have done, to motivate others and show off? Social aspect
+  ☐ A chat room or maybe a place people can post stuff to motivate others
+  ☐ Maybe you can match with people that completed similiar tasks

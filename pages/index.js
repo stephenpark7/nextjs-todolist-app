@@ -32,10 +32,10 @@ export default function Home() {
           </Head>
 
           <Container>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse ultricies massa nec mi mollis, 
-              at tincidunt tortor lobortis. Aenean vel massa at eros suscipit suscipit non id metus. Phasellus eget pharetra metus. 
-            </p>
+            <p className={indexStyles.desc}>
+              Create, organize, and manage tasks. The app to help you get organized
+              and start doing!
+            </p><br />
           </Container>
           
           <section className={indexStyles.btns}>

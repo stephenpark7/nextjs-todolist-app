@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <>
       {tasks !== undefined ?
-        <Layout>
+        <Layout header="Dashboard" >
           <Head>
             <title>{siteTitle}</title>
           </Head>
