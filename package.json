@@ -24,7 +24,7 @@
     "react-dom": "^16.13.1",
     "react-transition-group": "^4.4.1",
     "swr": "^0.2.2",
-    "validator": "^13.0.0"
+    "validator": "^13.7.0"
   },
   "cacheDirectories": [
     ".next/cache"
